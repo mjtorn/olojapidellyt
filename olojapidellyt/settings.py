@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django_facebook',
     'south',
     'olojapidellyt.web'
 )
@@ -156,11 +157,20 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'olojapidellyt.context_processors.site',
     'olojapidellyt.context_processors.analytics',
+    'django_facebook.context_processors.facebook',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_facebook.auth_backends.FacebookBackend',
 )
 
 GA_ACCOUNT_NUM = 'UA-27504672-1'
 
 DATE_FORMAT = 'd. m. Y'
+
+FACEBOOK_APP_ID = ''
+FACEBOOK_APP_SECRET = ''
 
 try:
     from custom_settings import *
