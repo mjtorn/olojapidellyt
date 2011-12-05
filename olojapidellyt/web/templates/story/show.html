@@ -9,7 +9,14 @@
 <p>
     <em>-- 
         {% if self.story.username %}
-        {{ self.story.username }} &mdash; fiilis {{ self.story.mood }}
+            {% if self.story.username == self.story.user.username %}
+        <a href="{% url UserProfile#show self.story.username %}">
+            {{ self.story.username }}
+        </a>
+            {% else %}
+        {{ self.story.username }}
+            {% endif %}
+        &mdash; fiilis {{ self.story.mood }}
         {% else %}
         Anonyymi &mdash; fiilis {{ self.story.mood }}
         {% endif %}
