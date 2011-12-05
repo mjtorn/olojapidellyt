@@ -7,7 +7,7 @@
     {% for story in recent %}
         <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
     {% empty %}
-        <li>Ei tarinoita :(</li>
+        <li>Ei oloja :(</li>
     {% endfor %}
     </ul>
 {% endblock sidebar_content %}
