@@ -2,6 +2,8 @@
 
 from django.core.urlresolvers import reverse
 
+from django.db.models import F
+
 from django.shortcuts import get_object_or_404, redirect
 
 from olojapidellyt.web import forms, models
@@ -58,7 +60,10 @@ class UserProfile(Resource):
         username = self.params.get('username', None)
         self.profile = get_object_or_404(models.UserProfile, user__username=username)
 
-        self.stories = self.profile.user.story_set.filter(visible=True).order_by('-posted_at')
+        self.stories = self.profile.user.story_set.filter(visible=True)
+        if username != self.request.user.username:
+            self.stories = self.stories.filter(username=F('user__username'))
+        self.stories = self.stories.order_by('-posted_at')
 
 # EOF
 
