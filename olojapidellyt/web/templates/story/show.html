@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ self.story.heading }}
-{{ self.story.content }}
+<h1>{{ self.story.heading }}</h1>
+<h2>{{ self.story.posted_at|date }}</h2>
+<p>
+    {{ self.story.content }}
+</p>
+<p>
+    <em>-- 
+        {% if self.story.username %}
+        {{ self.story.username }}
+        {% else %}
+        Anonyymi
+        {% endif %}
+    </em>
+</p>
 {% endblock content%}
 
