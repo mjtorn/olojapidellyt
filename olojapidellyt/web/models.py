@@ -49,6 +49,12 @@ class Story(models.Model):
     def __unicode__(self):
         return u'%s' % self.heading
 
+    def get_description(self):
+        """Get the first three sentences
+        """
+
+        return '.'.join(self.content.split('.', 4)[:4])
+
     def save(self, *args, **kwargs):
         """Slugifying save
         """
