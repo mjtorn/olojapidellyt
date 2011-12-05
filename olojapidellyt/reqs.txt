@@ -4,4 +4,6 @@ dagny
 
 south
 
+django-facebook
+django-registration
 
