@@ -58,12 +58,42 @@ class UserProfile(Resource):
     @action
     def show(self):
         username = self.params.get('username', None)
+
+        self.is_you = username == self.request.user.username
+
         self.profile = get_object_or_404(models.UserProfile, user__username=username)
 
         self.stories = self.profile.user.story_set.filter(visible=True)
-        if username != self.request.user.username:
+        if not self.is_you:
             self.stories = self.stories.filter(username=F('user__username'))
         self.stories = self.stories.order_by('-posted_at')
+
+    @action
+    def edit(self):
+        username = self.params.get('username', None)
+        if username != self.request.user.username:
+            return redirect('UserProfile#show', self.request.user.username)
+
+        self.form = forms.UserProfile(initial={
+            'description': self.request.user.get_profile().description,
+        })
+        self.action = reverse('Story#update', args=(self.request.user.username,))
+
+    @action
+    def update(self):
+        username = self.params.get('username', None)
+        if username != self.request.user.username:
+            return redirect('UserProfile#show', self.request.user.username)
+
+        data = self.request.POST.copy() or None
+
+        self.form = forms.UserProfile(data, instance=request.user.get_profile())
+        self.action = reverse('UserProfile#update')
+
+        if self.form.is_bound:
+            if self.form.is_valid():
+                self.form.save()
+                return redirect('UserProfile#show', self.request.user.username)
 
 # EOF
 
