@@ -46,6 +46,9 @@ class Story(models.Model):
 
     objects = managers.StoryManager()
 
+    def __unicode__(self):
+        return u'%s' % self.heading
+
     def save(self, *args, **kwargs):
         """Slugifying save
         """
