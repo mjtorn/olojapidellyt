@@ -19,6 +19,7 @@
         Onko oloja pidellyt? <a href="{% url Story#new %}">Kerro siitä tästä!</a>
     </p>
     <p>
+    {% if not request.user.id %}
         Tai kirjaudu ensin sisään Facebookilla! Voit nähdä omalta sivultasi aiemmat
         olot ja luoda itsellesi profiilin!
         <form action="{% url facebook_connect %}?facebook_login=1" method="post">
@@ -26,6 +27,9 @@
         <button class="btn primary">Facebook-kirjautuminen!</button></a>
         <input type="hidden" value="{{ request.path }}" name="next" />
         </form>
+    {% else %}
+        Olet kirjautunut käyttäjänä {{ request.user.username }}
+    {% endif %}
     </p>
     <div id="fb-root">&nbsp;</div>
 </div>
