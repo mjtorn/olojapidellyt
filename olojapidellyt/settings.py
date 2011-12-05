@@ -1,10 +1,12 @@
+# vim: tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
+
 # Django settings for olojapidellyt project.
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Markus Törnqvist', 'mjt@fadconsulting.com'),
+    (u'Markus Törnqvist', 'mjt@fadconsulting.com'),
 )
 
 MANAGERS = ADMINS
@@ -149,4 +151,7 @@ try:
     from custom_settings import *
 except ImportError:
     pass
+
+
+# EOF
 
