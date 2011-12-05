@@ -25,6 +25,20 @@ class UserProfile(facebook_models.FacebookProfileModel, models.Model):
     def __unicode__(self):
         return u'%s' % self.user
 
+    def remove_fb_profile(self):
+        """Facebook wants us to be able to do this :(
+        """
+
+        for f in facebook_models.FacebookProfileModel._meta.fields:
+            setattr(self, f.name, None)
+
+        self.raw_data = ''
+        self.save()
+
+        self.user.is_active = False
+        self.user.save()
+
+
 @signals.post_save(sender=auth_models.User)
 def create_profile(instance, **kwargs):
     if kwargs['created']:
