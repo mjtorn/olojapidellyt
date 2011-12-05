@@ -150,6 +150,13 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'web.UserProfile'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
+    'olojapidellyt.context_processors.site',
+)
+
 try:
     from custom_settings import *
 except ImportError:
