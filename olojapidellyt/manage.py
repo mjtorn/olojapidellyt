@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+
+import os
+if os.environ.has_key('VIRTUALENV'):
+    activate = os.path.join(os.environ['VIRTUALENV'], 'bin', 'activate_this.py')
+    execfile(activate, dict(__file__=activate))
+
 from django.core.management import execute_manager
 import imp
 try:
