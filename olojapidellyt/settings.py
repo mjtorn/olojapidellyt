@@ -1,10 +1,10 @@
 # Django settings for olojapidellyt project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Markus Törnqvist', 'mjt@fadconsulting.com'),
 )
 
 MANAGERS = ADMINS
@@ -27,11 +27,11 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Helsinki'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fi'
 
 SITE_ID = 1
 
@@ -143,3 +143,9 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from custom_settings import *
+except ImportError:
+    pass
+
