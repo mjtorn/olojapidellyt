@@ -20,7 +20,7 @@ class UserProfile(facebook_models.FacebookProfileModel, models.Model):
 
     user = models.OneToOneField(auth_models.User)
 
-    description = models.TextField()
+    description = models.TextField(help_text='Kuvaus')
 
     def __unicode__(self):
         return u'%s' % self.user
