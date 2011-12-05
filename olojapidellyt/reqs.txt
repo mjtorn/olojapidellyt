@@ -7,3 +7,5 @@ south
 django-facebook
 django-registration
 
+PIL
+
