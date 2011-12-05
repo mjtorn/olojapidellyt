@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    {% block meta_description %}
+    {% if meta_description %}
+    <meta name="description" content="{{ meta_description }}" />
+    <meta property="og:description" content="{{ meta_description }}" />
+    {% endif %}
+    {% endblock meta_description %}
+    <meta name="keywords" content="olojapidellyt olo oloja pidellyt fiilis tunne tarina arki" /> 
+
+    {% block title %}
+    <title>Olojapidellyt.fi &mdash; {% if title %}{{ title }}{% else %}Saitti fiiliksesi mukaan!{% endif %} </title>
+    <meta property="og:title" content="Bountychest &mdash; {% if title %}{{ title }}{% else %}Saitti fiiliksesi mukaan!{% endif %}" />
+    {% endblock title %}
+
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/site.css" type="text/css" />
+    {% block extra_css %}
+    {% endblock extra_css %}
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>
+    {% block extra_script %}
+    {% endblock extra_script %}
+    {% if GA_ACCOUNT_NUM %}
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ GA_ACCOUNT_NUM }}']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    {% endif %}
+</head>
+
+<body>
+{% block content %}
+{% endblock content %}
+</body>
+
+</html>
+
