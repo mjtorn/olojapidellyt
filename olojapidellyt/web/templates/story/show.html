@@ -9,9 +9,9 @@
 <p>
     <em>-- 
         {% if self.story.username %}
-        {{ self.story.username }}
+        {{ self.story.username }} &mdash; fiilis {{ self.story.mood }}
         {% else %}
-        Anonyymi
+        Anonyymi &mdash; fiilis {{ self.story.mood }}
         {% endif %}
     </em>
 </p>
