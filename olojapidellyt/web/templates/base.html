@@ -53,14 +53,24 @@
 <div class="topbar">
     <div class="topbar-inner">
         <div class="container-fluid">
+
         <a class="brand" href="http://{{ site.domain }}/">{{ site.name }}</a>
         <ul class="nav">
             <li class="active"><a href="/">Etusivu</a></li>
-            {% if request.user.id %}
-            <li><a href="{% url UserProfile#show request.user.username %}">Oma sivu</a></li>
-            {% endif %}
         </ul>
-        <p class="pull-right"></p>
+
+        {% if request.user.id %}
+        <ul id="login_menu" class="nav secondary_nav">
+            <li class="menu">
+                <a class="menu" href="{% url UserProfile#show request.user.username %}">Oma sivu</a>
+                <ul class="menu-dropdown">
+                    <li><a href="{% url UserProfile#show request.user.username %}">Profiili</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url logout %}"><button class="btn primary">Kirjaudu ulos</button></a></li>
+                </ul>
+            </li>
+        </ul>
+        {% endif %}
         </div>
     </div>
 </div>
