@@ -2,7 +2,9 @@
 
 from django.core.urlresolvers import reverse
 
-from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
+
+from django.shortcuts import render_to_response, redirect
 
 from django.template import RequestContext
 
@@ -35,6 +37,14 @@ def index(request):
     req_ctx = RequestContext(request, locals())
 
     return render_to_response('index.html', req_ctx)
+
+@login_required
+def clear(request):
+    """Clear this
+    """
+
+    request.user.get_profile().remove_fb_profile()
+    return redirect(reverse('logout'))
 
 # EOF
 
