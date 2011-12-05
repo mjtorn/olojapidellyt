@@ -10,9 +10,11 @@ from django.template import defaultfilters
 
 from olojapidellyt.web import managers
 
+from django_facebook import models as facebook_models
+
 # Create your models here.
 
-class UserProfile(models.Model):
+class UserProfile(facebook_models.FacebookProfileModel, models.Model):
     """Basic user profile stuff
     """
 
