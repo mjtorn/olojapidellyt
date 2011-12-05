@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'olojapidellyt.views.home', name='home'),
+    url(r'^facebook/', include('django_facebook.urls')),
     url(r'^', include('olojapidellyt.web.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
