@@ -19,5 +19,8 @@ class Story(Resource):
         slug = self.params.get('slug', None)
         self.story = get_object_or_404(models.Story, visible=True, slug=slug)
 
+        self.title = self.story.heading
+        self.meta_description = self.story.get_description()
+
 # EOF
 
