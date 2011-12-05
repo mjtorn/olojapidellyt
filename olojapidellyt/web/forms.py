@@ -30,5 +30,14 @@ class Story(forms.ModelForm):
 
         return super(Story, self).__init__(*args, **kwargs)
 
+
+class UserProfile(forms.ModelForm):
+    """Story form
+    """
+
+    class Meta:
+        model = models.UserProfile
+        fields = ('description',)
+
 # EOF
 
