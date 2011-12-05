@@ -29,11 +29,13 @@
         <p>
             {{ descr }}
         </p>
-        {% if descr != random_story.content %}
         <p>
+        {% if descr != random_story.content %}
             <a class="btn" href="{% url Story#show random_story.slug %}">Lue kokonaan! &raquo;</a>
-        </p>
+        {% else %}
+            <a class="btn" href="{% url Story#show random_story.slug %}">Katso! &raquo;</a>
         {% endif %}
+        </p>
         {% endwith %}
         {% endif %}
     </div>
