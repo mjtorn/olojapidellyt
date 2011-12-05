@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-Onko oloja pidellyt? <a href="{% url Story#new %}">Kerro siitä tästä!</a>
-<ul>
-{% for story in recent %}
-    <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
-{% empty %}
-    <li>Ei tarinoita :(</li>
-{% endfor %}
-</ul>
+<div class="hero-unit">
+    <h1>olojapidellyt</h1>
+    <p>
+        Onko oloja pidellyt? <a href="{% url Story#new %}">Kerro siitä tästä!</a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="span6">
+        <ul>
+        {% for story in recent %}
+            <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
+        {% empty %}
+            <li>Ei tarinoita :(</li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}
 
