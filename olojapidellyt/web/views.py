@@ -25,7 +25,9 @@ def index(request):
     except IndexError:
         random_story = None
 
-    form = forms.Story()
+    form = forms.Story(initial={
+        'mood': 0,
+    })
     action = reverse('Story#create')
 
     req_ctx = RequestContext(request, locals())

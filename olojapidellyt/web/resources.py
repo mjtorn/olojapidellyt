@@ -26,7 +26,9 @@ class Story(Resource):
 
     @action
     def new(self):
-        self.form = forms.Story()
+        self.form = forms.Story(initial={
+            'mood': 0,
+        })
         self.action = reverse('Story#create')
 
     @action
