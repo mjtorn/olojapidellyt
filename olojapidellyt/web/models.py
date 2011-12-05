@@ -45,6 +45,8 @@ class Story(models.Model):
 
     visible = models.BooleanField(default=True, db_index=True)
 
+    mood = models.IntegerField(help_text='Fiilis')
+
     objects = managers.StoryManager()
 
     def __unicode__(self):
