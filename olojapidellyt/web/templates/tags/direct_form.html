@@ -1,0 +1,20 @@
+<form method="post" action="{{ action }}">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <span class="help-inline">
+            {{ field.help_text }}
+        </span>
+        <div>
+        {{ field }}
+        </div>
+        <div>
+        {% for error in field.errors %}
+            {{ error }}
+        {% endfor %}
+        </div>
+    {% endfor %}
+    
+    <button class="btn" type="submit">Kerro olostasi</button>
+</form>
+
