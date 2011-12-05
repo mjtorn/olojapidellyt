@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth.decorators import login_required
 
+from django.contrib import messages
+
 from django.shortcuts import render_to_response, redirect
 
 from django.template import RequestContext
@@ -44,6 +46,7 @@ def clear(request):
     """
 
     request.user.get_profile().remove_fb_profile()
+    messages.success(request, 'Tiedot poistettu')
     return redirect(reverse('logout'))
 
 # EOF
