@@ -1,8 +1,8 @@
 # vim: tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
-from olojapidellyt.web import models
+from olojapidellyt.web import forms, models
 
 from dagny import Resource, action
 
@@ -21,6 +21,22 @@ class Story(Resource):
 
         self.title = self.story.heading
         self.meta_description = self.story.get_description()
+
+    @action
+    def new(self):
+        self.form = forms.Story()
+
+    @action
+    def create(self):
+        data = self.request.POST.copy() or None
+        self.form = forms.Story(data)
+        if self.form.is_bound:
+            if self.form.is_valid():
+                self.story = self.form.save()
+
+                return redirect('Story#show', self.story.slug)
+
+        return self.new.render()
 
 # EOF
 
