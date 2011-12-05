@@ -62,11 +62,12 @@ class Story(models.Model):
                 good = self.__class__.objects.filter(slug=use_slug).count() == 0
                 if good:
                     self.slug = use_slug
-                    return super(Story, self).save(*args, **kwargs)
                 else:
                     i += 1
 
-                use_slug = '%s-%d' % (orig_slug, i)
+                    use_slug = '%s-%d' % (orig_slug, i)
+
+        return super(Story, self).save(*args, **kwargs)
 
 # EOF
 
