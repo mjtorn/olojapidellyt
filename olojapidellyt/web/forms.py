@@ -21,6 +21,8 @@ class Story(forms.ModelForm):
     """Story form
     """
 
+    submit_text = u'Kerro olostasi'
+
     class Meta:
         model = models.Story
         exclude = ('user', 'posted_at', 'slug', 'visible')
@@ -34,6 +36,8 @@ class Story(forms.ModelForm):
 class UserProfile(forms.ModelForm):
     """Story form
     """
+
+    submit_text = u'Päivitä'
 
     class Meta:
         model = models.UserProfile
