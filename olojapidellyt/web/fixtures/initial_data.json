@@ -1,0 +1,20 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "mjt", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2011-12-05 21:02:51", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$03efa$41964b6cdd09983a8bd0cd316ab5fb291f87752e", 
+            "email": "mjt@fadconsulting.com", 
+            "date_joined": "2011-12-05 21:02:51"
+        }
+    }
+]
