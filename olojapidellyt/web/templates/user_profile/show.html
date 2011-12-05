@@ -12,8 +12,13 @@
 {% endblock %}
 
 {% block content %}
+<h1>Käyttäjäprofiili</h1>
 <div class="hero-unit">
-    user
+    <h2>{{ self.profile.user.first_name }} {{ self.profile.user.last_name }}</h2>
+    <p>Liittynyt: {{ self.profile.user.date_joined|date }}</p>
+    <pre>
+        {{ self.profile.description }}
+    </pre>
 </div>
 
 {% if self.is_you %}
