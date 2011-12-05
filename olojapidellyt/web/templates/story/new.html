@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="{% url Story#create %}">
+{% csrf_token %}
+{{ self.form.as_p }}
+<button type="submit">Lähetä tarinasi</button>
+</form>
+{% endblock content %}
+
