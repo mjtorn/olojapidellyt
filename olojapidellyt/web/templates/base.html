@@ -7,16 +7,16 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     {% block meta_description %}
-    {% if meta_description %}
-    <meta name="description" content="{{ meta_description }}" />
-    <meta property="og:description" content="{{ meta_description }}" />
+    {% if self.meta_description %}
+    <meta name="description" content="{{ self.meta_description }}" />
+    <meta property="og:description" content="{{ self.meta_description }}" />
     {% endif %}
     {% endblock meta_description %}
     <meta name="keywords" content="olojapidellyt olo oloja pidellyt fiilis tunne tarina arki" /> 
 
     {% block title %}
-    <title>Olojapidellyt.fi &mdash; {% if title %}{{ title }}{% else %}Saitti fiiliksesi mukaan!{% endif %} </title>
-    <meta property="og:title" content="Bountychest &mdash; {% if title %}{{ title }}{% else %}Saitti fiiliksesi mukaan!{% endif %}" />
+    <title>Olojapidellyt.fi &mdash; {% if self.title %}{{ self.title }}{% else %}Saitti fiiliksesi mukaan!{% endif %} </title>
+    <meta property="og:title" content="Bountychest &mdash; {% if self.title %}{{ self.title }}{% else %}Saitti fiiliksesi mukaan!{% endif %}" />
     {% endblock title %}
 
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
