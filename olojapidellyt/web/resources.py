@@ -77,7 +77,7 @@ class UserProfile(Resource):
         self.form = forms.UserProfile(initial={
             'description': self.request.user.get_profile().description,
         })
-        self.action = reverse('Story#update', args=(self.request.user.username,))
+        self.action = reverse('UserProfile#update', args=(self.request.user.username,))
 
     @action
     def update(self):
@@ -87,8 +87,8 @@ class UserProfile(Resource):
 
         data = self.request.POST.copy() or None
 
-        self.form = forms.UserProfile(data, instance=request.user.get_profile())
-        self.action = reverse('UserProfile#update')
+        self.form = forms.UserProfile(data, instance=self.request.user.get_profile())
+        self.action = reverse('UserProfile#update', args=(self.request.user.username,))
 
         if self.form.is_bound:
             if self.form.is_valid():
