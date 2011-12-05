@@ -155,7 +155,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
     'olojapidellyt.context_processors.site',
+    'olojapidellyt.context_processors.analytics',
 )
+
+GA_ACCOUNT_NUM = 'UA-27504672-1'
 
 try:
     from custom_settings import *
