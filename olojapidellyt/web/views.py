@@ -1,10 +1,12 @@
 # vim: tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
 
+from django.core.urlresolvers import reverse
+
 from django.shortcuts import render_to_response
 
 from django.template import RequestContext
 
-from olojapidellyt.web import models
+from olojapidellyt.web import forms, models
 
 # Create your views here.
 
@@ -22,6 +24,9 @@ def index(request):
         random_story = random_story[0]
     except IndexError:
         random_story = None
+
+    form = forms.Story()
+    action = reverse('Story#create')
 
     req_ctx = RequestContext(request, locals())
 
