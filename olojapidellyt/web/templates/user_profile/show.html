@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block sidebar_content %}
+<h5>Aiemmat olot</h5>
+    <ul>
+    {% for story in self.stories %}
+        <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
+    {% empty %}
+        <li>Ei oloja :(</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
