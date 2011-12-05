@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for story in self.stories %}
+    <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
+{% empty %}
+    <li>Ei tarinoita :(</li>
+{% endfor %}
+</ul>
+{% endblock content %}
+
