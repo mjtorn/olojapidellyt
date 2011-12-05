@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-unit">
+    <h1>Oloa ei löytynyt :|</h1>
+    <p>
+        Valitettavasti hakemaasi oloa ei löydetty.
+    </p>
+    <p>
+        Voit <a href="{% url index %}">palata etusivulle</a> tai
+        <a href="{% url Story#new %}">kertoa olostasi itse</a>.
+    </p>
+</div>
+{% endblock %}
+
