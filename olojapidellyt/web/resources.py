@@ -43,5 +43,17 @@ class Story(Resource):
 
         return self.new.render()
 
+
+class UserProfile(Resource):
+    """UserProfile resource
+    """
+
+    @action
+    def show(self):
+        username = self.params.get('username', None)
+        self.profile = get_object_or_404(models.UserProfile, user__username=username)
+
+        self.stories = self.profile.user.story_set.filter(visible=True).order_by('-posted_at')
+
 # EOF
 

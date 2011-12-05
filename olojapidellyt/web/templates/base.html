@@ -56,6 +56,9 @@
         <a class="brand" href="http://{{ site.domain }}/">{{ site.name }}</a>
         <ul class="nav">
             <li class="active"><a href="/">Etusivu</a></li>
+            {% if request.user.id %}
+            <li><a href="{% url UserProfile#show request.user.username %}">Oma sivu</a></li>
+            {% endif %}
         </ul>
         <p class="pull-right"></p>
         </div>
