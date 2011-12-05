@@ -12,9 +12,16 @@ def index(request):
     """Probably the only view in town
     """
 
-    recent = models.Story.objects.get_visible()
-    recent = recent.order_by('-posted_at')
+    visible_stories = models.Story.objects.get_visible()
+
+    recent = visible_stories.order_by('-posted_at')
     recent = recent[:5]
+
+    random_story = visible_stories.order_by('?')
+    try:
+        random_story = random_story[0]
+    except IndexError:
+        random_story = None
 
     req_ctx = RequestContext(request, locals())
 
