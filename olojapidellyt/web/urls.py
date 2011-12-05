@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^tarinat/', resources('web.resources.Story', name='Story', id=('slug', r'[\w\-\d]+'))),
     url(r'^profiili/', resources('web.resources.UserProfile', name='UserProfile', id=('username', r'[\w\-_@\d]+'))),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^poista/$', views.clear, name='clear'),
     url(r'^$', views.index, name='index'),
 )
 
