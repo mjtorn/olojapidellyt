@@ -11,3 +11,21 @@
     </ul>
 {% endblock %}
 
+{% block content %}
+<div class="hero-unit">
+    user
+</div>
+
+{% if self.is_you %}
+<div class="row">
+    <div class="span6">
+        <h5>Voit päivittää kuvaustasi</h5>
+        <a href="{% url UserProfile#edit self.request.user.username %}">
+            <button class="btn primary">Tästä</button>
+        </a>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
