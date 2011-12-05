@@ -160,6 +160,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 GA_ACCOUNT_NUM = 'UA-27504672-1'
 
+DATE_FORMAT = 'd. m. Y'
+
 try:
     from custom_settings import *
 except ImportError:
