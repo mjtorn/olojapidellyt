@@ -29,6 +29,8 @@ class Story(Resource):
         self.form = forms.Story(initial={
             'mood': 0,
         })
+        if self.request.user.id:
+            self.form.initial['username'] = self.request.user.username
         self.action = reverse('Story#create')
 
     @action
@@ -37,7 +39,10 @@ class Story(Resource):
         self.form = forms.Story(data)
         if self.form.is_bound:
             if self.form.is_valid():
-                self.story = self.form.save()
+                self.story = self.form.save(commit=False)
+                if self.request.user.id:
+                    self.story.user = self.request.user
+                self.story.save()
 
                 return redirect('Story#show', self.story.slug)
 

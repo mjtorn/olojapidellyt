@@ -28,6 +28,8 @@ def index(request):
     form = forms.Story(initial={
         'mood': 0,
     })
+    if request.user.id:
+        form.initial['username'] = request.user.username
     action = reverse('Story#create')
 
     req_ctx = RequestContext(request, locals())
