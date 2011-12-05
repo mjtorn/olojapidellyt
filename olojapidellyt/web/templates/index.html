@@ -25,12 +25,16 @@
         {% if random_story %}
         <h4>Satunnainen olo<h4>
         <h5>{{ random_story.heading }}</h5>
+        {% with random_story.get_description as descr %}
         <p>
-            {{ random_story.content }}
+            {{ descr }}
         </p>
+        {% if descr != random_story.content %}
         <p>
-            <a class="btn" href="{% url Story#show random_story.slug %}">Lisää &raquo;</a>
+            <a class="btn" href="{% url Story#show random_story.slug %}">Lue kokonaan! &raquo;</a>
         </p>
+        {% endif %}
+        {% endwith %}
         {% endif %}
     </div>
 </div>
