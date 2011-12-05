@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-index stories: {{ recent }}
+<ul>
+{% for story in recent %}
+    <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
+{% empty %}
+    <li>Ei tarinoita :(</li>
+{% endfor %}
+</ul>
 {% endblock %}
 
