@@ -1,5 +1,7 @@
 # vim: tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
 
+from django.core.urlresolvers import reverse
+
 from django.shortcuts import get_object_or_404, redirect
 
 from olojapidellyt.web import forms, models
@@ -25,6 +27,7 @@ class Story(Resource):
     @action
     def new(self):
         self.form = forms.Story()
+        self.action = reverse('Story#create')
 
     @action
     def create(self):
