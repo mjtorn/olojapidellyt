@@ -64,14 +64,16 @@
 {% block sidebar %}
     <div class="sidebar">
         <div class="well">
+            {% block sidebar_content %}
             <h5>Mikä tämä on?</h5>
+            <p>
             olojapidellyt.fi on saitti, jolla voit kertoa anonyymisti tai omalla nimellä
             tarinoita miten oloja on pidellyt.
+            </p>
 
-            {% block sidebar_content %}
-            <div>
+            <p>
             Tervetuloa!
-            </div>
+            </p>
             {% endblock sidebar_content %}
         </div>
     </div>

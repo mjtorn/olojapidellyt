@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
+{% block sidebar_content %}
+    {{ block.super }}
+    <h5>Viimeisimmät olot</h5>
+    <ul>
+    {% for story in recent %}
+        <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
+    {% empty %}
+        <li>Ei tarinoita :(</li>
+    {% endfor %}
+    </ul>
+{% endblock sidebar_content %}
+
 {% block content %}
 <div class="hero-unit">
     <h1>olojapidellyt</h1>
@@ -10,13 +22,16 @@
 
 <div class="row">
     <div class="span6">
-        <ul>
-        {% for story in recent %}
-            <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
-        {% empty %}
-            <li>Ei tarinoita :(</li>
-        {% endfor %}
-        </ul>
+        {% if random_story %}
+        <h4>Satunnainen olo<h4>
+        <h5>{{ random_story.heading }}</h5>
+        <p>
+            {{ random_story.content }}
+        </p>
+        <p>
+            <a class="btn" href="{% url Story#show random_story.slug %}">Lisää &raquo;</a>
+        </p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
