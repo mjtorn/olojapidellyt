@@ -10,6 +10,9 @@
     {% if self.meta_description %}
     <meta name="description" content="{{ self.meta_description }}" />
     <meta property="og:description" content="{{ self.meta_description }}" />
+    {% else %}
+    <meta name="description" content="Saitti, jolla voit kertoa anonyymisti tai omalla nimellä tarinoita miten oloja on pidellyt. " />
+    <meta property="og:description" content="Saitti, jolla voit kertoa anonyymisti tai omalla nimellä tarinoita miten oloja on pidellyt. " />
     {% endif %}
     {% endblock meta_description %}
     <meta name="keywords" content="olojapidellyt olo oloja pidellyt fiilis tunne tarina arki" /> 
