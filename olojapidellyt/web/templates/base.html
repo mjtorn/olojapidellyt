@@ -46,8 +46,42 @@
 </head>
 
 <body>
+{% block topbar %}
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container-fluid">
+        <a class="brand" href="http://olojapidellyt.fi/">Oloja pidellyt</a>
+        <ul class="nav">
+            <li class="active"><a href="/">Etusivu</a></li>
+        </ul>
+        <p class="pull-right"></p>
+        </div>
+    </div>
+</div>
+{% endblock topbar %}
+
+<div class="container-fluid">
+{% block sidebar %}
+    <div class="sidebar">
+        <div class="well">
+            <h5>Mikä tämä on?</h5>
+            olojapidellyt.fi on saitti, jolla voit kertoa anonyymisti tai omalla nimellä
+            tarinoita miten oloja on pidellyt.
+
+            {% block sidebar_content %}
+            <div>
+            Tervetuloa!
+            </div>
+            {% endblock sidebar_content %}
+        </div>
+    </div>
+{% endblock %}
+
+    <div class="content">
 {% block content %}
 {% endblock content %}
+    </div>
+</div>
 </body>
 
 </html>
