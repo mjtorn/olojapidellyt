@@ -28,7 +28,7 @@
         <input type="hidden" value="{{ request.path }}" name="next" />
         </form>
     {% else %}
-        Olet kirjautunut käyttäjänä {{ request.user.username }}
+        Olet kirjautunut käyttäjänä <a href="{% url UserProfile#show request.user.username %}">{{ request.user.username }}</a>
     {% endif %}
     </p>
     <div id="fb-root">&nbsp;</div>
