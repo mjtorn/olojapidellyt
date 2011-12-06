@@ -17,12 +17,12 @@
 <div class="hero-unit">
     <h1>olojapidellyt</h1>
     <p>
-        Onko oloja pidellyt? <a href="{% url Story#new %}">Kerro siitä tästä!</a>
+        Onko oloja pidellyt? <a href="{% url Story#new %}">Kerro siitä tästä!</a> Vaikka nimettomästi :)
     </p>
     <p>
     {% if not request.user.id %}
         Tai kirjaudu ensin sisään Facebookilla! Voit nähdä omalta sivultasi aiemmat
-        olot ja luoda itsellesi profiilin!
+        olot ja luoda itsellesi profiilin.
         <form action="{% url facebook_connect %}?facebook_login=1" method="post">
         <a href="javascript:void(0);" style="font-size: 20px;" onclick="F.connect(this.parentNode);">
         <button class="btn primary">Facebook-kirjautuminen!</button></a>
