@@ -21,7 +21,7 @@ def index(request):
     visible_stories = models.Story.objects.get_visible()
 
     recent = visible_stories.order_by('-posted_at')
-    recent = recent[:10]
+    recent = recent[:5]
 
     random_story = visible_stories.order_by('?')
     try:
