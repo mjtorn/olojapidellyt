@@ -50,7 +50,7 @@ class Story(models.Model):
     """
 
     user = models.ForeignKey(auth_models.User, null=True, default=None)
-    username = models.CharField(help_text='Nimimerkki', max_length=30, null=True, blank=True, default=None)
+    username = models.CharField(help_text='Vapaaehtoinen nimimerkki', max_length=30, null=True, blank=True, default=None)
 
     posted_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
