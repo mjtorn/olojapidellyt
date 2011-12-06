@@ -2,6 +2,8 @@
 
 from django.core.urlresolvers import reverse
 
+from django.contrib import messages
+
 from django.db.models import F
 
 from django.shortcuts import get_object_or_404, redirect
@@ -46,6 +48,8 @@ class Story(Resource):
                     self.story.user = self.request.user
                 self.story.save()
 
+                messages.success(self.request, 'Olo lisättiin onnistuneesti!')
+
                 return redirect('Story#show', self.story.slug)
 
         return self.new.render()
@@ -72,6 +76,10 @@ class UserProfile(Resource):
     def edit(self):
         username = self.params.get('username', None)
         if username != self.request.user.username:
+            if not self.request.user.id:
+                messages.error(self.request, 'Kirjaudupa ensin sisään')
+                return redirect(reverse('index'))
+            messages.error(self.request, 'Äläpä yritä hakkeroida toisten tiliä')
             return redirect('UserProfile#show', self.request.user.username)
 
         self.form = forms.UserProfile(initial={
@@ -83,6 +91,10 @@ class UserProfile(Resource):
     def update(self):
         username = self.params.get('username', None)
         if username != self.request.user.username:
+            if not self.request.user.id:
+                messages.error(self.request, 'Kirjaudupa ensin sisään')
+                return redirect(reverse('index'))
+            messages.error(self.request, 'Äläpä yritä hakkeroida toisten tiliä')
             return redirect('UserProfile#show', self.request.user.username)
 
         data = self.request.POST.copy() or None
