@@ -20,14 +20,10 @@ def index(request):
 
     visible_stories = models.Story.objects.get_visible()
 
-    recent = visible_stories.order_by('-posted_at')
-    recent = recent[:5]
+    recent = models.Story.objects.get_recent()
+    top_moods = models.Story.objects.get_top_moods()
 
-    random_story = visible_stories.order_by('?')
-    try:
-        random_story = random_story[0]
-    except IndexError:
-        random_story = None
+    random_story = models.Story.objects.get_random_story()
 
     form = forms.Story(initial={
         'mood': 0,
