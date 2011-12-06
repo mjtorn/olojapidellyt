@@ -1,0 +1,8 @@
+    <ul>
+    {% for story in stories %}
+        <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
+    {% empty %}
+        <li>Ei oloja :(</li>
+    {% endfor %}
+    </ul>
+
