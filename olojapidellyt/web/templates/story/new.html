@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
+{% block sidebar_content %}
+    {{ block.super }}
+    <h5>Viimeisimmät olot</h5>
+    {% with self.recent as stories %}
+    {% include "tags/story_list.html" %}
+    {% endwith %}
+
+    <h5>Huipuimmat olot</h5>
+    {% with self.top_moods as stories %}
+    {% include "tags/story_list.html" %}
+    {% endwith %}
+{% endblock sidebar_content %}
+
 {% block content %}
 <h1>Kerro olostasi!</h1>
 {% include "tags/form.html" %}

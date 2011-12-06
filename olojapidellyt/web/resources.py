@@ -40,6 +40,9 @@ class Story(Resource):
             self.form.initial['username'] = self.request.user.username
         self.action = reverse('Story#create')
 
+        self.recent = models.Story.objects.get_recent()
+        self.top_moods = models.Story.objects.get_top_moods()
+
     @action
     def create(self):
         data = self.request.POST.copy() or None
