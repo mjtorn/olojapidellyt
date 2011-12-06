@@ -1,2 +1,6 @@
 include olojapidellyt/reqs.txt
 
+recursive-include olojapidellyt/web/static/
+recursive-include olojapidellyt/web/templates/ *
+
+
