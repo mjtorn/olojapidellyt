@@ -25,7 +25,7 @@ class StoryManager(models.Manager):
         """Top moods
         """
 
-        top_moods = self.get_visible().order_by('-posted_at', '-mood')
+        top_moods = self.get_visible().order_by('-mood', '-posted_at')
         top_moods = top_moods[:5]
 
         return top_moods
