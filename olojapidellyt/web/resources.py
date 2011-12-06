@@ -28,6 +28,9 @@ class Story(Resource):
         self.title = self.story.heading
         self.meta_description = self.story.get_description()
 
+        self.recent = models.Story.objects.get_recent()
+        self.top_moods = models.Story.objects.get_top_moods()
+
     @action
     def new(self):
         self.form = forms.Story(initial={
