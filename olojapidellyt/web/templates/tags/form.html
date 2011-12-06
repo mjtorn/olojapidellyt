@@ -2,10 +2,8 @@
     {% csrf_token %}
 
     {% for field in self.form %}
-    <div class="input">
-        <span class="help-inline">
+        <div class="input">
             {{ field.help_text }}
-        </span>
         <div>
         {{ field }}
         </div>
@@ -14,7 +12,7 @@
             {{ error }}
         {% endfor %}
         </div>
-    </div>
+        </div>
     {% endfor %}
     
     <button class="btn" type="submit">{{ self.form.submit_text }}</button>

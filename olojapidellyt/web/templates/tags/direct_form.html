@@ -2,9 +2,8 @@
     {% csrf_token %}
 
     {% for field in form %}
-        <span class="help-inline">
+        <div class="clearfix">
             {{ field.help_text }}
-        </span>
         <div>
         {{ field }}
         </div>
@@ -12,6 +11,7 @@
         {% for error in field.errors %}
             {{ error }}
         {% endfor %}
+        </div>
         </div>
     {% endfor %}
     
