@@ -3,13 +3,14 @@
 {% block sidebar_content %}
     {{ block.super }}
     <h5>Viimeisimmät olot</h5>
-    <ul>
-    {% for story in recent %}
-        <li><a href="{% url Story#show story.slug %}">{{ story.heading }}</a></li>
-    {% empty %}
-        <li>Ei oloja :(</li>
-    {% endfor %}
-    </ul>
+    {% with recent as stories %}
+    {% include "tags/story_list.html" %}
+    {% endwith %}
+
+    <h5>Huipuimmat olot</h5>
+    {% with top_moods as stories %}
+    {% include "tags/story_list.html" %}
+    {% endwith %}
 {% endblock sidebar_content %}
 
 {% block content %}
