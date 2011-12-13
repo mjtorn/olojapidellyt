@@ -15,7 +15,7 @@ from django.utils.safestring import mark_safe
 
 class OtherRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
     def render(self):
-        return mark_safe(u'<div class="radio">\n%s\n<div>' % u'\n'.join([u'%s %s' % (force_unicode(w.tag()), force_unicode(w.choice_label)) for w in self]))
+        return mark_safe(u'<div class="radio">\n%s\n</div>' % u'\n'.join([u'%s %s' % (force_unicode(w.tag()), force_unicode(w.choice_label)) for w in self]))
 
 class Story(forms.ModelForm):
     """Story form
