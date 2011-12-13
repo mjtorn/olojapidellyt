@@ -55,7 +55,7 @@ class Story(models.Model):
     posted_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     heading = models.CharField(help_text='Otsikko', max_length=255)
-    content = models.TextField(help_text='Tarina')
+    content = models.TextField(help_text='Olo')
 
     slug = models.SlugField()
 
