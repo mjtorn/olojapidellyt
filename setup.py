@@ -19,11 +19,14 @@ def get_egg_version():
 
     pkg_info = os.path.join(egg_path, 'PKG-INFO')
 
-    with open(pkg_info, 'r') as pkg_info_f:
-        for line in pkg_info_f.readlines():
-            split_line = line.split(': ')
-            if split_line[0] == 'Version':
-                return split_line[1].strip()
+    for pkg_candidate in (pkg_info, 'PKG-INFO'):
+        if os.path.exists(pkg_candidate):
+            with open(pkg_info, 'r') as pkg_info_f:
+                for line in pkg_info_f.readlines():
+                    split_line = line.split(': ')
+                    if split_line[0] == 'Version':
+                        return split_line[1].strip()
+            break
 
     raise ValueError('No version found')
 
