@@ -17,7 +17,7 @@
 <div class="hero-unit">
     <h1>olojapidellyt</h1>
     <p>
-        Onko oloja pidellyt? <a href="{% url Story#new %}">Kerro siitä tästä!</a> Vaikka nimettomästi :)
+        Onko oloja pidellyt? Kerro siitä <a href="{% url Story#new %}">täällä!</a> Vaikka nimettomästi :)
     </p>
     <p>
     {% if not request.user.id %}
@@ -31,6 +31,9 @@
         <p>
         <em>Huom!</em> Kirjautuneenakin voit jättää <em>nimettömiä</em> oloja &dash; laita vain kuvitteellinen
         nimimerkki tai jätä kenttä tyhjäksi!
+        </p>
+        <p>
+        Otsikkokin on vapaaehtoinen :)
         </p>
     {% else %}
         Olet kirjautunut käyttäjänä <a href="{% url UserProfile#show request.user.username %}">{{ request.user.username }}</a>
