@@ -9,7 +9,9 @@
         </div>
         <div>
         {% for error in field.errors %}
+            <span class="error">
             {{ error }}
+            </span>
         {% endfor %}
         </div>
         </div>
