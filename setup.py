@@ -21,7 +21,7 @@ def get_egg_version():
 
     for pkg_candidate in (pkg_info, 'PKG-INFO'):
         if os.path.exists(pkg_candidate):
-            with open(pkg_info, 'r') as pkg_info_f:
+            with open(pkg_candidate, 'r') as pkg_info_f:
                 for line in pkg_info_f.readlines():
                     split_line = line.split(': ')
                     if split_line[0] == 'Version':
