@@ -54,7 +54,7 @@ class Story(models.Model):
 
     posted_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
-    heading = models.CharField(help_text='Otsikko', max_length=255)
+    heading = models.CharField(help_text='Vapaaehtoinen otsikko', max_length=255, blank=True)
     content = models.TextField(help_text='Olo')
 
     slug = models.SlugField()
@@ -68,6 +68,12 @@ class Story(models.Model):
     def __unicode__(self):
         return u'%s' % self.heading
 
+    def get_heading(self):
+        """Use the first sentence
+        """
+
+        return self.content.split('.', 1)[0]
+
     def get_description(self):
         """Get the first three sentences
         """
@@ -77,6 +83,9 @@ class Story(models.Model):
     def save(self, *args, **kwargs):
         """Slugifying save
         """
+
+        if not self.heading:
+            self.heading = self.get_heading()
 
         if not self.slug:
             i = 0
