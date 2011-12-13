@@ -47,6 +47,12 @@
 
 <div class="row">
     <div class="span6">
+        <h5>Kerro pikaisesti</h5>
+        <div>
+        {% include "tags/direct_form.html" %}
+        </div>
+    </div>
+    <div class="span6">
         {% if random_story %}
         <h4>Satunnainen olo<h4>
         <h5>{{ random_story.heading }}</h5>
@@ -63,13 +69,6 @@
         </p>
         {% endwith %}
         {% endif %}
-    </div>
-
-    <div class="span6">
-        <h5>Kerro pikaisesti</h5>
-        <div>
-        {% include "tags/direct_form.html" %}
-        </div>
     </div>
 </div>
 {% endblock %}
